@@ -1,0 +1,1056 @@
+---
+# Feel free to add content and custom Front Matter to this file.
+# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+
+layout: default
+---
+
+<style>
+    pre {
+        background-color: #f4f4f4;
+        border: 1px solid #ddd;
+        padding: 10px;
+        overflow: auto;
+        border-radius: 4px;
+    }
+    code {
+        font-family: monospace;
+    }
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+        overflow: hidden;
+        max-width: 100%;
+        background: #000;
+    }
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    audio {
+       width: 100%;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+   .table-container {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* For smooth scrolling on mobile devices */
+    }
+    html, body {
+        margin: 5px; /* Get rid of default margins */
+        padding: 5px; /* Get rid of default padding */
+        overflow-x: hidden; /* Prevent horizontal overflow */
+    }
+    th, td {
+        padding: 4px;
+        text-align: left;
+        border: 1px solid #ddd;
+        font-size: 1em; /* Base font size */
+        white-space: nowrap;
+    }
+    p {
+        text-align: justify;
+        hyphens: auto;
+    }   
+    /* Define a class for left-aligned text */
+    .left-align {
+        text-align: left;
+        hyphens: none;
+    } 
+    .container {
+        display: flex;
+        align-items: center;
+        max-width: 100%;
+    }
+
+    .highlight {
+        margin-left: 10px;
+        cursor: pointer;
+        padding: 5px 10px;
+        background-color: #f4f4f4;
+        border: 1px solid #ddd;
+        color: white;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        max-width: 100%;
+    }
+    
+    .highlight svg {
+        fill: white;
+        margin-right: 5px;
+    }
+
+    .highlight:hover {
+        background-color: #c5c5c5;
+    }
+</style>
+
+<h1>
+    EARS: An Anechoic Fullband Speech Dataset Benchmarked for Speech Enhancement and Dereverberation
+</h1>
+
+<p class="left-align">
+    Julius Richter, Yi-Chiao Wu, Steven Krenn, Simon Welker, Bunlong Lay, Shinji Watanabe, Alexander Richard, Timo 
+    Gerkmann
+</p>
+
+<h2>
+    Abstract
+</h2>
+
+<p>
+    We release the EARS (<b>E</b>xpressive <b>A</b>nechoic <b>R</b>ecordings of <b>S</b>peech) dataset, a high-quality
+    speech dataset comprising 107 speakers from diverse backgrounds, totalling in more than 100 hours of clean, anechoic
+    speech data. The dataset covers a large range of different speaking styles, including emotional speech, different
+    reading styles, non-verbal sounds, and conversational freeform speech. We benchmark various methods for speech
+    enhancement and dereverberation on the dataset and evaluate their performance through a set of instrumental metrics.
+    In addition, we conduct a listening test with 20 participants for the speech enhancement task, where a generative
+    method is preferred. We introduce a blind test set that allows for automatic online evaluation of uploaded data.
+    Dataset download links and automatic evaluation server can be found online.
+</p>
+
+<h2>
+    EARS Dataset
+</h2>
+
+<p>
+    The EARS dataset is characterized by its scale, diversity, and high recording quality. In Table 1, we list 
+    characteristics of the EARS dataset in comparison to other speech datasets. 
+</p>
+
+<div class="table-container">
+    <table>
+        <caption style="caption-side: bottom; text-align: left; padding: 8px; font-style: italic;">
+            <strong>Table 1: Speech datasets.</strong> In contrast to existing datasets, the EARS dataset is of higher
+            recording quality, large, and more diverse. <sup>&dagger;</sup>contains files with limited bandwidth.
+        </caption>
+        <thead>
+            <tr style="border-top: 2px solid black; border-bottom: 2px solid black;">
+                <th>&nbsp;</th>
+                <th>hours</th>
+                <th>speakers</th>
+                <th>sample rate</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>DNS (LibriVox) <span class="reference" data-ref="librivox"></span></td>
+                <td>556</td>
+                <td>1948</td>
+                <td>48 kHz<sup>&dagger;</sup></td>
+            </tr>
+            <tr>
+                <td>LibriSpeech <span class="reference" data-ref="librispeech"></span></td>
+                <td>982</td>
+                <td>2484</td>
+                <td>16 kHz</td>
+            </tr>
+            <tr>
+                <td>LJSpeech <span class="reference" data-ref="ljspeech"></span></td>
+                <td>24</td>
+                <td>1</td>
+                <td>22.05 kHz</td>
+            </tr>
+            <tr>
+                <td>TIMIT <span class="reference" data-ref="timit"></span></td>
+                <td>5</td>
+                <td>632</td>
+                <td>16 kHz</td>
+            </tr>
+            <tr>
+                <td>VCTK <span class="reference" data-ref="vctk"></span></td>
+                <td>44</td>
+                <td>110</td>
+                <td>48 kHz</td>
+            </tr>
+            <tr>
+                <td>WSJ0 <span class="reference" data-ref="wsj0"></span></td>
+                <td>29</td>
+                <td>119</td>
+                <td>16 kHz</td>
+            </tr>
+            <tr style="border-bottom: 2px solid black;">
+                <td><b>EARS (ours)</b></td>
+                <td><b>100</b></td>
+                <td><b>107</b></td>
+                <td><b>48 kHz</b></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p>
+    EARS contains 100 h of anechoic speech recordings at 48 kHz from over 100 English speakers with high demographic 
+    diversity. The dataset spans the full range of human speech, including reading tasks in seven different reading 
+    styles, emotional reading and freeform speech in 22 different emotions, conversational speech, and non-verbal sounds 
+    like laughter or coughing. Reading tasks feature seven styles (regular, loud, whisper, fast, slow, high pitch, and 
+    low pitch). Additionally, the dataset features unconstrained freeform speech and speech in 22 different emotional 
+    styles. We provide transcriptions of the reading portion and meta-data of the speakers (gender, age, race, first
+    language).
+</p>
+
+<h3>
+    Audio Examples
+</h3>
+
+<p>
+    Here we present a few audio examples from the EARS dataset. 
+</p>
+
+<p>
+    p002/emo_adoration_sentences.wav<br>
+    <audio controls>
+        <source src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears/p002_emo_adoration_sentences.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+    <br>
+
+    p008/emo_contentment_sentences.wav<br>
+    <audio controls>
+        <source src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears/p008_emo_contentment_sentences.wav" type="audio/wav">
+        Your browser does not support the audio element.
+        </audio>
+    <br>
+
+    p010/emo_cuteness_sentences.wav<br>
+    <audio controls>
+        <source src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears/p010_emo_cuteness_sentences.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+    <br>
+
+    p011/emo_anger_sentences.wav<br>
+    <audio controls>
+        <source src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears/p011_emo_anger_sentences.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+    <br>
+
+    p012/rainbow_05_whisper.wav<br>
+    <audio controls>
+        <source src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears/p012_rainbow_05_whisper.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+    <br>
+
+    p014/rainbow_04_loud.wav<br>
+    <audio controls>
+        <source src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears/p014_rainbow_04_loud.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+    <br>
+
+    p016/rainbow_03_regular.wav<br>
+    <audio controls>
+        <source src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears/p016_rainbow_03_regular.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+    <br>
+
+    p017/rainbow_08_fast.wav<br>
+    <audio controls>
+        <source src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears/p017_rainbow_08_fast.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+    <br>
+
+    p018/vegetative_eating.wav<br>
+    <audio controls>
+        <source src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears/p018_vegetative_eating.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+    <br>
+
+    p019/vegetative_yawning.wav<br>
+    <audio controls>
+        <source src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears/p019_vegetative_yawning.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+    <br>
+
+    p020/freeform_speech_01.wav<br>
+    <audio controls>
+        <source src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears/p020_freeform_speech_01.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+</p>
+
+<br>
+
+<h2>
+    Benchmarks
+</h2>
+
+<p>
+    The EARS dataset enables various speech processing tasks to be evaluated in a controlled and comparable way. Here, we
+    present benchmarks for speech enhancement and dereverberation tasks.
+</p>
+
+<br>
+
+<h3>
+    EARS-WHAM
+</h3>
+
+<p>
+    For the task of speech enhancement, we construct the EARS-WHAM dataset, which mixes speech from the EARS dataset 
+    with real noise recordings from the WHAM! dataset <span class="reference" data-ref="wham"></span>. More details can 
+    be found in the <a href="https://arxiv.org/abs/2406.06185" target="_blank">paper</a>.
+</p>
+
+<h4>Results</h4>
+
+<div class="table-container">
+    <table style="width:100%; border-collapse: collapse;">
+        <caption style="caption-side: bottom; text-align: left; padding: 8px; font-style: italic;">
+            <strong>Table 2: Results on EARS-WHAM.</strong> Values indicate the mean of the metrics over the test set. 
+            The best results are highlighted in bold.
+        </caption>
+        <thead>
+            <tr style="border-top: 2px solid black; border-bottom: 2px solid black;">
+                <th></th>
+                <th style="text-align: right;">POLQA</th>
+                <th style="text-align: right;">SI-SDR</th>
+                <th style="text-align: right;">PESQ</th>
+                <th style="text-align: right;">ESTOI</th>
+                <th style="text-align: right;">DNSMOS</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Noisy</td>
+                <td style="text-align: right;">1.71</td>
+                <td style="text-align: right;">5.98</td>
+                <td style="text-align: right;">1.24</td>
+                <td style="text-align: right;">0.49</td>
+                <td style="text-align: right;">2.74</td>
+            </tr>
+            <tr>
+                <td>Conv-TasNet <span class="reference" data-ref="convtasnet"></span></td>
+                <td style="text-align: right;">2.73</td>
+                <td style="text-align: right;"><strong>16.93</strong></td>
+                <td style="text-align: right;">2.31</td>
+                <td style="text-align: right;">0.70</td>
+                <td style="text-align: right;">3.47</td>
+            </tr>
+            <tr>
+                <td>CDiffuSE <span class="reference" data-ref="cdiffuse"></span></td>
+                <td style="text-align: right;">1.81</td>
+                <td style="text-align: right;">8.35</td>
+                <td style="text-align: right;">1.60</td>
+                <td style="text-align: right;">0.53</td>
+                <td style="text-align: right;">2.87</td>
+            </tr>
+            <tr>
+                <td>Demucs <span class="reference" data-ref="demucs"></span></td>
+                <td style="text-align: right;">2.97</td>
+                <td style="text-align: right;">16.92</td>
+                <td style="text-align: right;">2.37</td>
+                <td style="text-align: right;">0.71</td>
+                <td style="text-align: right;">3.66</td>
+            </tr>
+            <tr style="border-bottom: 2px solid black;">
+                <td>SGMSE+ <span class="reference" data-ref="sgmse"></span></td>
+                <td style="text-align: right;"><strong>3.40</strong></td>
+                <td style="text-align: right;">16.78</td>
+                <td style="text-align: right;"><strong>2.50</strong></td>
+                <td style="text-align: right;"><strong>0.73</strong></td>
+                <td style="text-align: right;"><strong>3.88</strong></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<h4>
+    Audio Examples
+</h4>
+
+<p>
+    Here we present audio examples for the speech enhancement task. Below we show the noisy input, processed files for 
+    Conv-TasNet <span class="reference" data-ref="convtasnet"></span>, 
+    CDiffuSE <span class="reference" data-ref="cdiffuse"></span>, 
+    Demucs <span class="reference" data-ref="demucs"></span>, 
+    SGMSE+ <span class="reference" data-ref="sgmse"></span>, 
+    and the clean ground truth.
+</p>
+
+<p>Select an audio file: &nbsp;&nbsp;
+    <select id="audioSelect" onchange="playAudio()">
+        <option value="p102/00252_4.9dB">p102/00252_4.9dB</option>
+    <option value="p103/00464_11.8dB">p103/00464_11.8dB</option>
+    <option value="p104/00814_11.3dB">p104/00814_11.3dB</option>
+    <option value="p105/00735_0.4dB">p105/00735_0.4dB</option>
+    <option value="p106/00049_5.4dB">p106/00049_5.4dB</option>
+    <option value="p107/00519_8.1dB">p107/00519_8.1dB</option>
+    <option value="p102/00404_4.0dB">p102/00404_4.0dB</option>
+    <option value="p103/00642_9.7dB">p103/00642_9.7dB</option>
+    <option value="p104/00014_6.9dB">p104/00014_6.9dB</option>
+    <option value="p105/00246_3.8dB">p105/00246_3.8dB</option>
+    <option value="p106/00060_0.7dB">p106/00060_0.7dB</option>
+    <option value="p107/00159_-0.8dB">p107/00159_-0.8dB</option>
+    <option value="p102/00189_2.4dB">p102/00189_2.4dB</option>
+    <option value="p103/00483_1.5dB">p103/00483_1.5dB</option>
+    <option value="p104/00357_0.5dB">p104/00357_0.5dB</option>
+    <option value="p105/00574_11.4dB">p105/00574_11.4dB</option>
+    <option value="p106/00291_5.8dB">p106/00291_5.8dB</option>
+    <option value="p107/00142_6.0dB">p107/00142_6.0dB</option>
+    <option value="p102/00327_1.9dB">p102/00327_1.9dB</option>
+    <option value="p103/00051_11.0dB">p103/00051_11.0dB</option>
+    <option value="p104/00507_0.6dB">p104/00507_0.6dB</option>
+    <option value="p105/00655_14.3dB">p105/00655_14.3dB</option>
+    <option value="p106/00852_14.9dB">p106/00852_14.9dB</option>
+    <option value="p107/00575_15.6dB">p107/00575_15.6dB</option>
+    <option value="p102/00785_6.2dB">p102/00785_6.2dB</option>
+    <option value="p103/00595_5.8dB">p103/00595_5.8dB</option>
+    <option value="p104/00662_3.4dB">p104/00662_3.4dB</option>
+    <option value="p105/00148_11.6dB">p105/00148_11.6dB</option>
+    <option value="p106/00039_3.5dB">p106/00039_3.5dB</option>
+    <option value="p107/00173_5.9dB">p107/00173_5.9dB</option>
+    </select>
+</p>
+
+<p>
+    Noisy: <br>
+    <audio id="audioPlayerNoisy" controls>
+        <source id="audioSourceNoisy" src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/noisy/p102/00252_4.9dB.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio><br>
+
+    Conv-TasNet <span class="reference" data-ref="convtasnet"></span>:<br>
+    <audio id="audioPlayerConvTasNet" controls>
+        <source id="audioSourceConvTasNet" src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/convtasnet/p102/00252_4.9dB.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio><br>
+
+    CDiffuSE <span class="reference" data-ref="cdiffuse"></span>:<br>
+    <audio id="audioPlayerCDiffuSE" controls>
+        <source id="audioSourceCDiffuSE" src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/cdiffuse/p102/00252_4.9dB.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio><br>
+
+    Demucs <span class="reference" data-ref="demucs"></span>:<br>
+    <audio id="audioPlayerDemucs" controls>
+        <source id="audioSourceDemucs" src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/demucs/p102/00252_4.9dB.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio><br>
+
+    SGMSE+ <span class="reference" data-ref="sgmse"></span>:<br>
+    <audio id="audioPlayerSGMSE" controls>
+        <source id="audioSourceSGMSE" src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/sgmse/p102/00252_4.9dB.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio><br>
+
+    Clean: <br>
+    <audio id="audioPlayerClean" controls>
+        <source id="audioSourceClean" src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/clean/p102/00252_4.9dB.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+</p>
+
+<script>
+    function playAudio() {
+        var audioPlayerNoisy = document.getElementById('audioPlayerNoisy');
+        var audioPlayerConvTasNet = document.getElementById('audioPlayerConvTasNet');
+        var audioPlayerCDiffuSE = document.getElementById('audioPlayerCDiffuSE');
+        var audioPlayerDemucs = document.getElementById('audioPlayerDemucs');
+        var audioPlayerSGMSE = document.getElementById('audioPlayerSGMSE');
+        var audioPlayerClean = document.getElementById('audioPlayerClean');
+        var audioSourceNoisy = document.getElementById('audioSourceNoisy');
+        var audioSourceConvTasNet = document.getElementById('audioSourceConvTasNet');
+        var audioSourceCDiffuSE = document.getElementById('audioSourceCDiffuSE');
+        var audioSourceDemucs = document.getElementById('audioSourceDemucs');
+        var audioSourceSGMSE = document.getElementById('audioSourceSGMSE');
+        var audioSourceClean = document.getElementById('audioSourceClean');
+        var selectedAudio = document.getElementById('audioSelect').value;
+
+        if (selectedAudio) {
+            // Set the source of the source elements, not the audio players
+            audioSourceNoisy.src = "https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/noisy/" + selectedAudio + ".wav";
+            audioPlayerNoisy.load(); // Load the selected audio file using the audio player
+
+            audioSourceConvTasNet.src = "https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/convtasnet/" + selectedAudio + ".wav";
+            audioPlayerConvTasNet.load(); // Load the selected audio file using the audio player
+
+            audioSourceCDiffuSE.src = "https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/cdiffuse/" + selectedAudio + ".wav";
+            audioPlayerCDiffuSE.load(); // Load the selected audio file using the audio player
+
+            audioSourceDemucs.src = "https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/demucs/" + selectedAudio + ".wav";
+            audioPlayerDemucs.load(); // Load the selected audio file using the audio player
+
+            audioSourceSGMSE.src = "https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/sgmse/" + selectedAudio + ".wav";
+            audioPlayerSGMSE.load(); // Load the selected audio file using the audio player
+
+            audioSourceClean.src = "https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/clean/" + selectedAudio + ".wav";
+            audioPlayerClean.load(); // Load the selected audio file using the audio player
+
+            // This will ensure that the audio players are updating their children source elements
+            // and reloading them
+        }
+    }
+</script>
+<br>
+
+<h3>
+    Blind test set
+</h3>
+
+<p>
+    We create a blind test set for which we only publish the noisy audio files but not the clean ground truth. It
+    contains 743 files (2 h) from six speakers (3 male, 3 female) that are not part of the EARS dataset and noise
+    especially recorded for this test set.
+</p>
+
+<h4>Results</h4>
+
+<div class="table-container">
+    <table>
+        <caption style="caption-side: bottom; text-align: left; padding: 8px; font-style: italic;">
+            <strong>Table 3: Results for the blind test.</strong> Values indicate the mean of the metrics over the test 
+            set. The best results are highlighted in bold.
+        </caption>
+        <thead>
+            <tr style="border-top: 2px solid black; border-bottom: 2px solid black;">
+                <th></th>
+                <th style="text-align: right;">POLQA</th>
+                <th style="text-align: right;">SI-SDR</th>
+                <th style="text-align: right;">PESQ</th>
+                <th style="text-align: right;">ESTOI</th>
+                <th style="text-align: right;">DNSMOS</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Noisy</td>
+                <td style="text-align: right;">1.81</td>
+                <td style="text-align: right;">6.48</td>
+                <td style="text-align: right;">1.28</td>
+                <td style="text-align: right;">0.57</td>
+                <td style="text-align: right;">2.79</td>
+            </tr>
+            <tr>
+                <td>Conv-TasNet <span class="reference" data-ref="convtasnet"></span></td>
+                <td style="text-align: right;">2.68</td>
+                <td style="text-align: right;">16.56</td>
+                <td style="text-align: right;">2.41</td>
+                <td style="text-align: right;">0.75</td>
+                <td style="text-align: right;">3.43</td>
+            </tr>
+            <tr>
+                <td>CDiffuSE <span class="reference" data-ref="cdiffuse"></span></td>
+                <td style="text-align: right;">1.93</td>
+                <td style="text-align: right;">8.22</td>
+                <td style="text-align: right;">1.64</td>
+                <td style="text-align: right;">0.59</td>
+                <td style="text-align: right;">2.92</td>
+            </tr>
+            <tr>
+                <td>Demucs <span class="reference" data-ref="demucs"></span></td>
+                <td style="text-align: right;">3.03</td>
+                <td style="text-align: right;"><strong>16.81</strong></td>
+                <td style="text-align: right;">2.50</td>
+                <td style="text-align: right;">0.76</td>
+                <td style="text-align: right;">3.62</td>
+            </tr>
+            <tr style="border-bottom: 2px solid black;">
+                <td>SGMSE+ <span class="reference" data-ref="sgmse"></span></td>
+                <td style="text-align: right;"><strong>3.35</strong></td>
+                <td style="text-align: right;">16.43</td>
+                <td style="text-align: right;"><strong>2.59</strong></td>
+                <td style="text-align: right;"><strong>0.78</strong></td>
+                <td style="text-align: right;"><strong>3.79</strong></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<h4>
+    Audio Examples
+</h4>
+
+<p>
+    Here we present audio examples for the blind test set. Below we show the noisy input, processed files for 
+    Conv-TasNet <span class="reference" data-ref="convtasnet"></span>, 
+    CDiffuSE <span class="reference" data-ref="cdiffuse"></span>, 
+    Demucs <span class="reference" data-ref="demucs"></span>, 
+    and SGMSE+ <span class="reference" data-ref="sgmse"></span>.
+</p>
+
+<p>Select an audio file: &nbsp;&nbsp;
+    <select id="audioSelectBlind" onchange="playAudioBlind()">
+        <option value="00620">00620</option>
+        <option value="00377">00377</option>
+        <option value="00406">00406</option>
+        <option value="00267">00267</option>
+        <option value="00294">00294</option>
+        <option value="00252">00252</option>
+        <option value="00065">00065</option>
+        <option value="00399">00399</option>
+        <option value="00000">00000</option>
+        <option value="00474">00474</option>
+        <option value="00488">00488</option>
+        <option value="00412">00412</option>
+        <option value="00226">00226</option>
+        <option value="00520">00520</option>
+        <option value="00652">00652</option>
+        <option value="00470">00470</option>
+        <option value="00561">00561</option>
+        <option value="00371">00371</option>
+        <option value="00388">00388</option>
+        <option value="00178">00178</option>
+        <option value="00508">00508</option>
+        <option value="00711">00711</option>
+        <option value="00202">00202</option>
+        <option value="00351">00351</option>
+        <option value="00437">00437</option>
+        <option value="00303">00303</option>
+        <option value="00143">00143</option>
+        <option value="00262">00262</option>
+        <option value="00282">00282</option>
+        <option value="00613">00613</option>
+    </select>
+</p>
+
+<p>
+    Noisy: <br>
+    <audio id="audioPlayerBlindNoisy" controls>
+        <source id="audioSourceBlindNoisy" src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-blind/noisy/00620.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio><br>
+
+    Conv-TasNet <span class="reference" data-ref="convtasnet"></span>:<br>
+    <audio id="audioPlayerBlindConvTasNet" controls>
+        <source id="audioSourceBlindConvTasNet" src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-blind/convtasnet/00620.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio><br>
+
+    CDiffuSE <span class="reference" data-ref="cdiffuse"></span>:<br>
+    <audio id="audioPlayerBlindCDiffuSE" controls>
+        <source id="audioSourceBlindCDiffuSE" src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-blind/cdiffuse/00620.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio><br>
+
+    Demucs <span class="reference" data-ref="demucs"></span>:<br>
+    <audio id="audioPlayerBlindDemucs" controls>
+        <source id="audioSourceBlindDemucs" src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-blind/demucs/00620.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio><br>
+
+    SGMSE+ <span class="reference" data-ref="sgmse"></span>:<br>
+    <audio id="audioPlayerBlindSGMSE" controls>
+        <source id="audioSourceBlindSGMSE" src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-blind/sgmse/00620.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+</p>
+
+<script>
+    function playAudioBlind() {
+        var audioPlayerBlindNoisy = document.getElementById('audioPlayerBlindNoisy');
+        var audioPlayerBlindConvTasNet = document.getElementById('audioPlayerBlindConvTasNet');
+        var audioPlayerBlindCDiffuSE = document.getElementById('audioPlayerBlindCDiffuSE');
+        var audioPlayerBlindDemucs = document.getElementById('audioPlayerBlindDemucs');
+        var audioPlayerBlindSGMSE = document.getElementById('audioPlayerBlindSGMSE');
+        var audioSourceBlindNoisy = document.getElementById('audioSourceBlindNoisy');
+        var audioSourceBlindConvTasNet = document.getElementById('audioSourceBlindConvTasNet');
+        var audioSourceBlindCDiffuSE = document.getElementById('audioSourceBlindCDiffuSE');
+        var audioSourceBlindDemucs = document.getElementById('audioSourceBlindDemucs');
+        var audioSourceBlindSGMSE = document.getElementById('audioSourceBlindSGMSE');
+        var selectedAudioBlind = document.getElementById('audioSelectBlind').value;
+
+        if (selectedAudioBlind) {
+            // Set the source of the source elements, not the audio players
+            audioSourceBlindNoisy.src = "https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-blind/noisy/" + selectedAudioBlind + ".wav";
+            audioPlayerBlindNoisy.load(); // Load the selected audio file using the audio player
+
+            audioSourceBlindConvTasNet.src = "https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-blind/convtasnet/" + selectedAudioBlind + ".wav";
+            audioPlayerBlindConvTasNet.load(); // Load the selected audio file using the audio player
+
+            audioSourceBlindCDiffuSE.src = "https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-blind/cdiffuse/" + selectedAudioBlind + ".wav";
+            audioPlayerBlindCDiffuSE.load(); // Load the selected audio file using the audio player
+
+            audioSourceBlindDemucs.src = "https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-blind/demucs/" + selectedAudioBlind + ".wav";
+            audioPlayerBlindDemucs.load(); // Load the selected audio file using the audio player
+
+            audioSourceBlindSGMSE.src = "https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-blind/sgmse/" + selectedAudioBlind + ".wav";
+            audioPlayerBlindSGMSE.load(); // Load the selected audio file using the audio player
+
+            // This will ensure that the audio players are updating their children source elements
+            // and reloading them
+        }
+    }
+</script>
+<br>
+
+<h3>
+    Evaluation on real-world data
+</h3>
+
+<p>
+    This demo showcases the denoising capabilities of SGMSE+ <span class="reference" data-ref="sgmse"></span> trained using the EARS-WHAM dataset. 
+    The red frame represents the noisy input audio, while the green frame indicates the enhanced, noise-reduced output.
+</p>
+
+<div class="video-container">
+    <iframe src="https://www.youtube.com/embed/H5FiO0JxPK4" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<br>
+
+<h3>
+    Dereverberation (EARS-Reverb)
+</h3>
+
+<p>
+    For the task of dereverberation, we use real recorded room impulse responses (RIRs) from multiple public datasets
+    <span class="reference" data-ref="ace air arni brudex dechorate detmoldsrir palimpsest"></span>. We generate 
+    reverberant speech by convolving the clean speech with the RIR. More details can be found in the 
+    <a href="https://arxiv.org/abs/2406.06185" target="_blank">paper</a>.
+</p>
+
+<h4>
+    Results
+</h4>
+
+<div class="table-container">
+    <table>
+        <caption style="caption-side: bottom; text-align: left; padding: 8px; font-style: italic;">
+            <strong>Table 4: Results on EARS-Reverb.</strong> Values indicate the mean of the metrics over the test set. The
+            best results are highlighted in bold.
+        </caption>
+        <thead>
+            <tr style="border-top: 2px solid black; border-bottom: 2px solid black;">
+                <th></th>
+                <th style="text-align: right;">POLQA</th>
+                <th style="text-align: right;">SI-SDR</th>
+                <th style="text-align: right;">PESQ</th>
+                <th style="text-align: right;">ESTOI</th>
+                <th style="text-align: right;">MOS Reverb</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Reverberant</td>
+                <td style="text-align: right;">1.75</td>
+                <td style="text-align: right;">-16.17</td>
+                <td style="text-align: right;">1.48</td>
+                <td style="text-align: right;">0.52</td>
+                <td style="text-align: right;">2.99</td>
+            </tr>
+            <tr style="border-bottom: 2px solid black;">
+                <td>SGMSE+ <span class="reference" data-ref="sgmse"></span></td>
+                <td style="text-align: right;"><strong>3.61</strong></td>
+                <td style="text-align: right;"><strong>5.79</strong></td>
+                <td style="text-align: right;"><strong>3.03</strong></td>
+                <td style="text-align: right;"><strong>0.85</strong></td>
+                <td style="text-align: right;"><strong>4.73</strong></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<h4>
+    Audio Examples
+</h4>
+
+<p>
+    Here we present audio examples for the dereverberation task. Below we show the reverberant input, processed files 
+    for SGMSE+ <span class="reference" data-ref="sgmse"></span>, and the clean ground truth.
+</p>
+
+<p>
+    Select an audio file: &nbsp;&nbsp;
+    <select id="audioSelectReverb" onchange="playAudioReverb()">
+        <option value="p102/00142_0.76">p102/00142_0.76</option>
+        <option value="p103/00219_0.85">p103/00219_0.85</option>
+        <option value="p104/00401_0.93">p104/00401_0.93</option>
+        <option value="p105/00538_0.62">p105/00538_0.62</option>
+        <option value="p106/00636_0.90">p106/00636_0.90</option>
+        <option value="p107/00801_0.54">p107/00801_0.54</option>
+        <option value="p102/00115_0.19">p102/00115_0.19</option>
+        <option value="p103/00161_0.74">p103/00161_0.74</option>
+        <option value="p104/00305_0.79">p104/00305_0.79</option>
+        <option value="p105/00513_0.63">p105/00513_0.63</option>
+        <option value="p106/00603_0.94">p106/00603_0.94</option>
+        <option value="p107/00840_0.62">p107/00840_0.62</option>
+        <option value="p102/00035_0.30">p102/00035_0.30</option>
+        <option value="p103/00167_0.75">p103/00167_0.75</option>
+        <option value="p104/00331_0.64">p104/00331_0.64</option>
+        <option value="p105/00540_0.18">p105/00540_0.18</option>
+        <option value="p106/00686_1.20">p106/00686_1.20</option>
+        <option value="p107/00854_0.55">p107/00854_0.55</option>
+        <option value="p102/00106_0.59">p102/00106_0.59</option>
+        <option value="p103/00191_0.24">p103/00191_0.24</option>
+        <option value="p104/00378_0.28">p104/00378_0.28</option>
+        <option value="p105/00591_0.97">p105/00591_0.97</option>
+        <option value="p106/00663_0.66">p106/00663_0.66</option>
+        <option value="p107/00893_0.31">p107/00893_0.31</option>
+        <option value="p102/00026_0.47">p102/00026_0.47</option>
+        <option value="p103/00267_0.96">p103/00267_0.96</option>
+        <option value="p104/00437_0.60">p104/00437_0.60</option>
+        <option value="p105/00494_0.57">p105/00494_0.57</option>
+        <option value="p106/00683_0.54">p106/00683_0.54</option>
+        <option value="p107/00792_0.86">p107/00792_0.86</option>
+    </select>
+</p>
+
+<p>
+    Reverberant: <br>
+    <audio id="audioPlayerReverb" controls>
+        <source id="audioSourceReverb" src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-reverb/noisy/p102/00142_0.76.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio><br>
+
+    SGMSE+ <span class="reference" data-ref="sgmse"></span>:<br>
+    <audio id="audioPlayerReverbSGMSE" controls>
+        <source id="audioSourceReverbSGMSE" src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-reverb/sgmse/p102/00142_0.76.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio><br>
+
+    Clean: <br>
+    <audio id="audioPlayerReverbClean" controls>
+        <source id="audioSourceReverbClean" src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-reverb/clean/p102/00142_0.76.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+</p>
+
+<script>
+    function playAudioReverb() {
+        var audioPlayerReverb = document.getElementById('audioPlayerReverb');
+        var audioPlayerReverbSGMSE = document.getElementById('audioPlayerReverbSGMSE');
+        var audioPlayerReverbClean = document.getElementById('audioPlayerReverbClean');
+        var audioSourceReverb = document.getElementById('audioSourceReverb');
+        var audioSourceReverbSGMSE = document.getElementById('audioSourceReverbSGMSE');
+        var audioSourceReverbClean = document.getElementById('audioSourceReverbClean');
+        var selectedAudioReverb = document.getElementById('audioSelectReverb').value;
+
+        if (selectedAudioReverb) {
+            // Set the source of the source elements, not the audio players
+            audioSourceReverb.src = "https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-reverb/noisy/" + selectedAudioReverb + ".wav";
+            audioPlayerReverb.load(); // Load the selected audio file using the audio player
+
+            audioSourceReverbSGMSE.src = "https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-reverb/sgmse/" + selectedAudioReverb + ".wav";
+            audioPlayerReverbSGMSE.load(); // Load the selected audio file using the audio player
+
+            audioSourceReverbClean.src = "https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-reverb/clean/" + selectedAudioReverb + ".wav";
+            audioPlayerReverbClean.load(); // Load the selected audio file using the audio player
+
+            // This will ensure that the audio players are updating their children source elements
+            // and reloading them
+        }
+    }
+</script> 
+
+<br>
+
+<h2 id="citation">
+    Citation
+</h2>
+
+<p>
+    If you use the dataset or any derivative of it, please cite our 
+    <a href="https://arxiv.org/abs/2406.06185" target="_blank">research paper</a>: 
+</p>
+
+<!-- <p>
+<pre><code>{% raw %}@inproceedings{richter2024ears,
+  title={{EARS}: An Anechoic Fullband Speech Dataset Benchmarked for Speech Enhancement and Dereverberation},
+  author={Richter, Julius and Wu, Yi-Chiao and Krenn, Steven and Welker, Simon and Lay, Bunlong and Watanabe, Shinjii and Richard, Alexander and Gerkmann, Timo},
+  booktitle={Interspeech},
+  year={2024}
+}{% endraw %}
+</code></pre>
+</p> -->
+
+<div class="container">
+    <div dir="auto" 
+        data-snippet-clipboard-copy-content="@inproceedings{richter2024ears,
+    title={{EARS}: An Anechoic Fullband Speech Dataset Benchmarked for Speech Enhancement and Dereverberation},
+    author={Richter, Julius and Wu, Yi-Chiao and Krenn, Steven and Welker, Simon and Lay, Bunlong and Watanabe, Shinjii and Richard, Alexander and Gerkmann, Timo},
+    booktitle={Interspeech},
+    year={2024}
+    }">
+<pre><code>{% raw %}@inproceedings{richter2024ears,
+    title={{EARS}: An Anechoic Fullband Speech Dataset Benchmarked for Speech Enhancement and Dereverberation},
+    author={Richter, Julius and Wu, Yi-Chiao and Krenn, Steven and Welker, Simon and Lay, Bunlong and Watanabe, Shinjii and Richard, Alexander and Gerkmann, Timo},
+    booktitle={Interspeech},
+    year={2024}
+    }{% endraw %}
+    </code></pre>
+    </div>
+    <button id="copyButton" class="highlight">
+        <svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 0 16 16" width="16" class="octicon octicon-clippy">
+            <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path>
+            <path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+        </svg>
+    </button>
+</div>
+
+<script>
+    document.getElementById('copyButton').addEventListener('click', function() {
+        // Locate the element with the text to copy
+        var textToCopy = document.querySelector('.highlight[data-snippet-clipboard-copy-content]').textContent;
+        
+        // Create a temporary text area to hold the text for copying
+        var tempTextArea = document.createElement('textarea');
+        tempTextArea.value = textToCopy;
+        document.body.appendChild(tempTextArea);
+        tempTextArea.select();
+
+        try {
+            document.execCommand('copy');
+        } catch (err) {
+            console.error('Unable to copy text: ', err);
+        }
+        
+        // Remove the temporary text area
+        document.body.removeChild(tempTextArea);
+    });
+</script>
+
+
+<h2>
+    References
+</h2>
+
+<ol id="refList" style="list-style-type: none; padding: 0;">
+    <!-- JavaScript will populate this list -->
+</ol>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const references = {
+            "librivox": "H. Dubey, A. Aazami, V. Gopal, B. Naderi, S. Braun, R. Cutler, H. Gamper, M. Golestaneh, and R. Aichner, “ICASSP 2023 deep noise suppression challenge,” in IEEE International Conference on Acoustics, Speech and Signal Processing, 2023.",
+            "librispeech": "V. Panayotov, G. Chen, D. Povey, and S. Khudanpur, “Librispeech: An ASR corpus based on public domain audio books,” in IEEE International Conference on Acoustics, Speech and Signal Processing, 2015, pp. 5206–5210.",
+            "ljspeech": "K. Ito and L. Johnson, “The LJ Speech Dataset,” 2017. [Online]. Available: https://keithito.com/LJ-Speech-Dataset/",
+            "timit": "J. S. Garofolo, “TIMIT acoustic phonetic continuous speech corpus,” Linguistic Data Consortium, 1993.",
+            "vctk": "J. Yamagishi, C. Veaux, and K. MacDonald, “CSTR VCTK corpus: English multi-speaker corpus for CSTR voice cloning toolkit (version 0.92),” 2019. [Online]. Available: https://datashare.ed.ac.uk/handle/10283/3443",
+            "wsj0": "J. S. Garofolo, D. Graff, D. Paul, and D. Pallett, “CSR-I (WSJ0) Complete - Linguistic Data Consortium,” 1993. [Online]. Available: https://catalog.ldc.upenn.edu/LDC93s6a",
+            "convtasnet": "Y. Luo and N. Mesgarani, “Conv-TasNet: Surpassing ideal time–frequency magnitude masking for speech separation,” IEEE/ACM Transactions on Audio, Speech, and Language Processing, vol. 27, no. 8, pp. 1256–1266, 2019.",
+            "cdiffuse": "Y.-J. Lu, Z.-Q. Wang, S. Watanabe, A. Richard, C. Yu, and Y. Tsao, “Conditional diffusion probabilistic model for speech enhancement,” in IEEE International Conference on Acoustics, Speech and Signal Processing, 2022, pp. 7402–7406.",
+            "demucs": "S. Rouard, F. Massa, and A. Défossez, “Hybrid transformers for music source separation,” in IEEE International Conference on Acoustics, Speech and Signal Processing, 2023.",
+            "sgmse": "J. Richter, S. Welker, J.-M. Lemercier, B. Lay, and T. Gerkmann, “Speech enhancement and dereverberation with diffusion-based generative models,” IEEE/ACM Transactions on Audio, Speech, and Language Processing, vol. 31, pp. 2351–2364, 2023.",
+            "wham": "G. Wichern, J. Antognini, M. Flynn, L. R. Zhu, E. McQuinn, D. Crow, E. Manilow, and J. L. Roux, “WHAM!: Extending speech separation to noisy environments,” in ISCA Interspeech, 2019, pp. 1368–1372.",
+            "ace": "J. Eaton, N. D. Gaubitch, A. H. Moore, and P. A. Naylor, “Estimation of room acoustic parameters: The ACE challenge,” IEEE/ACM Transactions on Audio, Speech, and Language Processing, vol. 24, no. 10, pp. 1681–1693, 2016.",
+            "air": "M. Jeub, M. Schafer, and P. Vary, “A binaural room impulse response database for the evaluation of dereverberation algorithms,” in IEEE International Conference on Digital Signal Processing, 2009.",
+            "arni": "K. Prawda, S. J. Schlecht, and V. V ̈alim ̈aki, “Robust selection of clean swept-sine measurements in non-stationary noise,” The Journal of the Acoustical Society of America, vol. 151, no. 3, pp. 2117–2126, 2022.",
+            "brudex": "D. Fejgin, W. Middelberg, and S. Doclo, “BRUDEX database: Binaural room impulse responses with uniformly distributed external microphones,” in Proc. ITG Conference on Speech Communication, 2023, pp. 126–130.",
+            "dechorate": "D. D. Carlo, P. Tandeitnik, C. Foy, N. Bertin, A. Deleforge, and S. Gannot, “dEchorate: a calibrated room impulse response dataset for echo-aware signal processing,” EURASIP Journal on Audio, Speech, and Music Processing, 2021.",
+            "detmoldsrir": "S. V. Amengual Gari, B. Sahin, D. Eddy, and M. Kob, “Open database of spatial room impulse responses at Detmold university of music,” in Audio Engineering Society Convention 149, 2020.",
+            "palimpsest": "“A sonic Palimpsest: Revisiting Chatham historic dockyards.” [Online]. Available: https://research.kent.ac.uk/sonic-palimpsest/impulse-responses/"
+        };
+
+        // Collect keys in order of their appearance, without duplication
+        const referenceElements = document.querySelectorAll('.reference');
+        const orderedKeys = [];
+        referenceElements.forEach(element => {
+            // Split the keys and iterate over them
+            const keys = element.dataset.ref.split(' ');
+            keys.forEach(key => {
+                // Add key if it's not already in the list to maintain first appearance order
+                if (!orderedKeys.includes(key) && references[key]) {
+                    orderedKeys.push(key);
+                }
+            });
+        });
+        let sortedReferences = {};
+        // Populate the sorted references object based on orderedKeys
+        orderedKeys.forEach(key => {
+            if (references[key]) {
+                sortedReferences[key] = references[key];
+            }
+        });
+
+        function changeId(element) {
+            // Change the id of the clicked element to the next one
+            key = element.id.split('-')[1];
+            elem = document.getElementById(`link-${key}`);
+            elem.href = `#${element.id}`;
+        }
+
+        const refList = document.getElementById('refList');
+        const refTotal = Object.keys(sortedReferences).length;
+        const maxWidth = `${Math.ceil(Math.log10(refTotal + 1)) * 10 + 5}px`;
+
+        Object.entries(sortedReferences).forEach(([key, ref], index) => {
+            const refNumber = index + 1;
+            const li = document.createElement('li');
+            li.id = `ref-${refNumber}`;
+            li.style.display = 'flex';
+            li.style.alignItems = 'baseline';
+            li.style.marginBottom = '5px';
+
+            const numberSpan = document.createElement('span');
+            numberSpan.style.fontWeight = 'regular';
+            numberSpan.style.minWidth = maxWidth;
+            numberSpan.style.textAlign = 'right';
+            numberSpan.style.marginRight = '10px';
+            numberSpan.style.whiteSpace = 'nowrap';
+
+            const numberLink = document.createElement('a');
+            numberLink.href = `#cite-${key}-0`; 
+            numberLink.id = `link-${key}`;
+            numberLink.textContent = `[${refNumber}]`;
+            numberLink.style.textDecoration = 'none';
+            numberSpan.appendChild(numberLink);
+
+            const textSpan = document.createElement('span');
+            textSpan.textContent = ref;
+
+            li.appendChild(numberSpan);
+            li.appendChild(textSpan);
+            refList.appendChild(li);
+        });
+
+        referenceCounter = {};
+        // Making In-text references linkable and combine multiple references
+        document.querySelectorAll('.reference').forEach(span => {
+            const keys = span.getAttribute('data-ref').split(' ');
+            const refNumbers = keys.map(key => {
+                const index = Object.keys(sortedReferences).indexOf(key);
+                return index + 1;
+            });
+            keys.forEach((key, i) => {
+                if (referenceCounter[key] >= 0) {
+                    referenceCounter[key]++;
+                } else {
+                    referenceCounter[key] = 0;
+                }
+
+                // Set up string if there are multiple references
+                if (keys.length > 1) {
+                    if (i === 0) {
+                        refText = `[${refNumbers[i]}, `;
+                    } else if (i === keys.length - 1) {
+                        refText = `${refNumbers[i]}]`;
+                    } else {
+                        refText = `${refNumbers[i]}, `;
+                    }
+                // Set up string if there is only one reference
+                } else {
+                    refText = `[${refNumbers[i]}]`;
+                }
+
+                const citeId = `cite-${key}-${referenceCounter[key]}`;
+                const citeLink = document.createElement('a');
+                citeLink.href = `#ref-${refNumbers[i]}`;
+                citeLink.textContent = refText;
+                citeLink.id = citeId;
+                citeLink.style.textDecoration = 'none';
+                citeLink.addEventListener('click', function () {
+                    changeId(this);
+                });
+
+                span.appendChild(citeLink);
+            });
+        });
+
+    });
+</script>
