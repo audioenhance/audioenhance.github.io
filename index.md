@@ -57,7 +57,6 @@ layout: default
 | ok           | good `oreos`      | hmm   |
 | ok           | good `zoute` drop | yumm  |
 
-### There's a horizontal rule below this.
 
 * * *
 
@@ -66,15 +65,13 @@ layout: default
 ![Octocat](https://github.githubassets.com/images/icons/emoji/octocat.png)
 
 
-### Definition lists can be used with HTML syntax.
+### The author Information.
 
 <dl>
 <dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
+<dd>EnhanceAudio</dd>
+<dt>BOrn</dt>
+<dd>2024</dd>
 <dt>Color</dt>
 <dd>Green</dd>
 </dl>
