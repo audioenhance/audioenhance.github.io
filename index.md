@@ -55,6 +55,17 @@ layout: default
 | ok           | good `oreos`      | hmm   |
 | ok           | good `zoute` drop | yumm  |
 
+<h3>
+    Evaluation on real-world data
+</h3>
+
+<p>
+    This demo showcases the denoising capabilities of SGMSE+ <span class="reference" data-ref="sgmse"></span> trained using the EARS-WHAM dataset. 
+    The red frame represents the noisy input audio, while the green frame indicates the enhanced, noise-reduced output.
+</p>
+
+<video class="art-video" preload="none" src="https://baikevideo.cdn.bcebos.com/media/mda-OdfGZXY16SVdPBHF/eecf7fe9ac1aee3880ba0fae57d1f2f7.mp4" __idm_id__="663553"></video>
+
 <br /><br />
 * * *
 
