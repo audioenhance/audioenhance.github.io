@@ -63,10 +63,9 @@ layout: default
     This demo showcases the denoising capabilities of SGMSE+ <span class="reference" data-ref="sgmse"></span> trained using the EARS-WHAM dataset. 
     The red frame represents the noisy input audio, while the green frame indicates the enhanced, noise-reduced output.
 </p>
-<video id="art-video" width="500" height="300" autoplay loop>
-    <source src="https://baikevideo.cdn.bcebos.com/media/mda-OdfGZXY16SVdPBHF/eecf7fe9ac1aee3880ba0fae57d1f2f7.mp4" type="video/mp4">
-    Your browser does not support the video element.
-</video>
+<div class="video-container">
+    <iframe src="https://www.youtube.com/embed/H5FiO0JxPK4" frameborder="0" allowfullscreen></iframe>
+</div>
 
 
 <br /><br />
