@@ -1,7 +1,8 @@
 ---
 layout: default
 ---
- # Audio Examples
+
+# Audio Examples
 
 <img src="thumbnail.png" width="50%">
 
