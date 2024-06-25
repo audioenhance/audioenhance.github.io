@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<img src="thumbnail.png" width="50%">
+<img src="thumbnail.png" width="50%" />
 
 ## Audio Examples
 
@@ -48,8 +48,6 @@ layout: default
 [Link to another page](another-page.html).
 
 
-###### Header 6
-
 | head1        | head two          | three |
 |:-------------|:------------------|:------|
 | ok           | good swedish fish | nice  |
@@ -64,7 +62,7 @@ layout: default
 
 <dl>
 <dt>Photo</dt>
-<dd>![Octocat](https://github.githubassets.com/images/icons/emoji/octocat.png)</dd>
+<dd><img src="https://github.githubassets.com/images/icons/emoji/octocat.png" /></dd>
 <dt>Name</dt>
 <dd>EnhanceAudio</dd>
 <dt>Born</dt>
