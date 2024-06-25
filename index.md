@@ -70,7 +70,7 @@ layout: default
 <dl>
 <dt>Name</dt>
 <dd>EnhanceAudio</dd>
-<dt>BOrn</dt>
+<dt>Born</dt>
 <dd>2024</dd>
 <dt>Color</dt>
 <dd>Green</dd>
