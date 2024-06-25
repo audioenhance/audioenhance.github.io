@@ -2,10 +2,9 @@
 layout: default
 ---
 
-# Audio Examples
-
 <img src="thumbnail.png" width="50%">
 
+## Audio Examples
 
 <p>
     Noisy: <br>
