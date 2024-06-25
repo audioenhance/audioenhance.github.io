@@ -60,14 +60,11 @@ layout: default
 
 * * *
 
-### Small image
-
-![Octocat](https://github.githubassets.com/images/icons/emoji/octocat.png)
-
-
 ### The author Information.
 
 <dl>
+<dt>Photo</dt>
+<dd>![Octocat](https://github.githubassets.com/images/icons/emoji/octocat.png)</dd>
 <dt>Name</dt>
 <dd>EnhanceAudio</dd>
 <dt>Born</dt>
