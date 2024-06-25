@@ -45,7 +45,7 @@ layout: default
 </p>
 
 
-[Link to another page](./another-page.html).
+[Link to another page](another-page.html).
 
 
 ###### Header 6
