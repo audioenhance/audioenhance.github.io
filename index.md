@@ -27,7 +27,6 @@ This is a normal paragraph following a header. GitHub is a code hosting platform
 > When something is important enough, you do it even if the odds are not in your favor.
 
 ### Header 3
-<audio src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/sgmse/p102/00252_4.9dB.wav" type="audio/wav"></audio>
 
 
 ```js
@@ -106,7 +105,7 @@ end
 
 ### Large image
 
-![Branching](thumbnail.png)
+![Branching](thumbnail.png#pic_center =200x200)
 
 
 ### Definition lists can be used with HTML syntax.
