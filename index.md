@@ -11,36 +11,31 @@ layout: default
     <audio id="audioPlayerNoisy" controls>
         <source id="audioSourceNoisy" src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/noisy/p102/00252_4.9dB.wav" type="audio/wav">
         Your browser does not support the audio element.
-    </audio><br>
-
+    </audio><br /><br />
 
     Conv-TasNet <span class="reference" data-ref="convtasnet"></span>:<br>
     <audio id="audioPlayerConvTasNet" controls>
         <source id="audioSourceConvTasNet" src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/convtasnet/p102/00252_4.9dB.wav" type="audio/wav">
         Your browser does not support the audio element.
-    </audio><br>
-
+    </audio><br /><br />
 
     CDiffuSE <span class="reference" data-ref="cdiffuse"></span>:<br>
     <audio id="audioPlayerCDiffuSE" controls>
         <source id="audioSourceCDiffuSE" src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/cdiffuse/p102/00252_4.9dB.wav" type="audio/wav">
         Your browser does not support the audio element.
-    </audio><br>
-
+    </audio><br /><br />
 
     Demucs <span class="reference" data-ref="demucs"></span>:<br>
     <audio id="audioPlayerDemucs" controls>
         <source id="audioSourceDemucs" src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/demucs/p102/00252_4.9dB.wav" type="audio/wav">
         Your browser does not support the audio element.
-    </audio><br>
-
+    </audio><br /><br />
 
     SGMSE+ <span class="reference" data-ref="sgmse"></span>:<br>
     <audio id="audioPlayerSGMSE" controls>
         <source id="audioSourceSGMSE" src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/sgmse/p102/00252_4.9dB.wav" type="audio/wav">
         Your browser does not support the audio element.
-    </audio><br>
-
+    </audio><br /><br />
 
     Clean: <br>
     <audio id="audioPlayerClean" controls>
@@ -60,8 +55,7 @@ layout: default
 | ok           | good `oreos`      | hmm   |
 | ok           | good `zoute` drop | yumm  |
 
-
-
+<br /><br />
 * * *
 
 ### The author Information.
