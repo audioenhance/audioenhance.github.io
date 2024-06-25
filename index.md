@@ -64,7 +64,7 @@ layout: default
     The red frame represents the noisy input audio, while the green frame indicates the enhanced, noise-reduced output.
 </p>
 <div class="video-container">
-    <iframe src="https://www.youtube.com/embed/H5FiO0JxPK4" frameborder="0" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/H5FiO0JxPK4" frameborder="1" allowfullscreen></iframe>
 </div>
 
 
