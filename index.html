@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AudioEnhance</title>
+
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        tr:not(:last-child):nth-child(5n+1) {
+            border-bottom: 1px solid gray;
+        }
+
+        th {
+            border: none;
+            padding: 10px;
+            background-color: #c0c0c0;
+        }
+
+        td {
+            border: none;
+            padding: 10px;
+        }
+
+        audio {
+            width: 20vw;
+            min-width: 130px;
+            max-width: 280px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+    </style>
+</head>
+<body>
+<h1>Audio samples from "SEANet: A Multi-modal Speech Enhancement Network"</h1>
+<p><b>Paper:&nbsp;&nbsp;</b>arXiv</p>
+<p><b>Authors:&nbsp;&nbsp;</b>Hua Li</p>
+<p><b>Abstract:&nbsp;&nbsp;</b>We explore the possibility of leveraging accelerometer data to perform speech enhancement
+    in very
+    noisy conditions. Although it is possible to only partially reconstruct user's speech from the accelerometer, the
+    latter provides a strong conditioning signal that is not influenced from noise sources in the environment. Based on
+    this observation, we feed a multi-modal input to SEANet (Sound EnhAncement Network), a wave-to-wave fully
+    convolutional model, which adopts a combination of feature losses and adversarial losses to reconstruct an enhanced
+    version of user's speech. We trained our model with data collected by sensors mounted on an earbud and synthetically
+    corrupted by adding different kinds of noise sources to the audio signal. Our experimental results demonstrate that
+    it is possible to achieve very high quality results, even in the case of interfering speech at the same level of
+    loudness. A sample of the output produced by our model is available at https://audioenhance.github.io
+</p>
+<p><b>About:&nbsp;&nbsp;</b>The audio examples in this page have been randomly selected from the evaluation datasets.
+    Each example
+    contains three rows: (1) clean sample; (2) mixed sample, where the audio channel has been mixed with another speech
+    sample or a noise sample; and (3) our result for denoising the audio channel. The five columns contain: (a) key
+    information; (b) embedded audio sample; (c) audio waveform, where blue is the clean audio and orange is mixed or
+    denoised sample; (d) mel log spectrogram for audio; (e) mel log spectrogram for accelerometer signal. Note that
+    accelerometer signal is the same for clean and mixed samples.</p>
+<br /> <br /><br />
+<h2>Mixed speech examples</h2><br />
+<table>
+    <tr>
+        <th>(a)
+        <th>(b)Embedded audio sample
+        <th>(c)Audio waveform
+        <th>(d)Mel log spectrogram for audio
+        <th>(e)Mel log spectrogram for accelerometer
+    </tr>
+    <tr>
+        <td>Clean sample
+        <td>
+            <audio id="audioPlayerConvTasNet" controls>
+                <source id="audioSourceConvTasNet"
+                        src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/convtasnet/p102/00252_4.9dB.wav"
+                        type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        <td><img src="sample.png"/>
+        <td><img src="sample1.png"/>
+        <td><img src="sample2.png"/>
+    </tr>
+    <tr>
+        <td>Clean sample
+        <td>
+            <audio id="audioPlayerConvTasNet1" controls>
+                <source id="audioSourceConvTasNet1"
+                        src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/convtasnet/p102/00252_4.9dB.wav"
+                        type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        <td><img src="sample.png"/>
+        <td><img src="sample1.png"/>
+        <td><img src="sample2.png"/>
+    </tr>
+    <tr>
+        <td>Clean sample
+        <td>
+            <audio id="audioPlayerConvTasNet2" controls>
+                <source id="audioSourceConvTasNet2"
+                        src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/convtasnet/p102/00252_4.9dB.wav"
+                        type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        <td><img src="sample.png"/>
+        <td><img src="sample1.png"/>
+        <td>
+    </tr>
+    <tr>
+        <td>Clean sample
+        <td>
+            <audio id="audioPlayerConvTasNet3" controls>
+                <source id="audioSourceConvTasNet3"
+                        src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/convtasnet/p102/00252_4.9dB.wav"
+                        type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        <td><img src="sample.png"/>
+        <td><img src="sample1.png"/>
+        <td><img src="sample2.png"/>
+    </tr>
+    <tr>
+        <td>Clean sample
+        <td>
+            <audio id="audioPlayerConvTasNet4" controls>
+                <source id="audioSourceConvTasNet4"
+                        src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/convtasnet/p102/00252_4.9dB.wav"
+                        type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        <td><img src="sample.png"/>
+        <td><img src="sample1.png"/>
+        <td><img src="sample2.png"/>
+    </tr>
+    <tr>
+        <td>Clean sample
+        <td>
+            <audio id="audioPlayerConvTasNet5" controls>
+                <source id="audioSourceConvTasNet5"
+                        src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/convtasnet/p102/00252_4.9dB.wav"
+                        type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        <td><img src="sample.png"/>
+        <td><img src="sample1.png"/>
+        <td>
+    </tr>
+    <tr>
+        <td>Clean sample
+        <td>
+            <audio id="audioPlayerConvTasNet6" controls>
+                <source id="audioSourceConvTasNet6"
+                        src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/convtasnet/p102/00252_4.9dB.wav"
+                        type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        <td><img src="sample.png"/>
+        <td><img src="sample1.png"/>
+        <td><img src="sample2.png"/>
+    </tr>
+    <tr>
+        <td>Clean sample
+        <td>
+            <audio id="audioPlayerConvTasNet7" controls>
+                <source id="audioSourceConvTasNet7"
+                        src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/convtasnet/p102/00252_4.9dB.wav"
+                        type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        <td><img src="sample.png"/>
+        <td><img src="sample1.png"/>
+        <td><img src="sample2.png"/>
+    </tr>
+    <tr>
+        <td>Clean sample
+        <td>
+            <audio id="audioPlayerConvTasNet8" controls>
+                <source id="audioSourceConvTasNet8"
+                        src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/convtasnet/p102/00252_4.9dB.wav"
+                        type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        <td><img src="sample.png"/>
+        <td><img src="sample1.png"/>
+        <td>
+    </tr>
+    <tr>
+        <td>Clean sample
+        <td>
+            <audio id="audioPlayerConvTasNet9" controls>
+                <source id="audioSourceConvTasNet9"
+                        src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/convtasnet/p102/00252_4.9dB.wav"
+                        type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        <td><img src="sample.png"/>
+        <td><img src="sample1.png"/>
+        <td><img src="sample2.png"/>
+    </tr>
+    <tr>
+        <td>Clean sample
+        <td>
+        <audio id="audioPlayerConvTasNet10" controls>
+                <source id="audioSourceConvTasNet10"
+                        src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/convtasnet/p102/00252_4.9dB.wav"
+                        type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        <td><img src="sample.png"/>
+        <td><img src="sample1.png"/>
+        <td><img src="sample2.png"/>
+    </tr>
+    <tr>
+        <td>Clean sample
+        <td>
+        <audio id="audioPlayerConvTasNet11" controls>
+                <source id="audioSourceConvTasNet11"
+                        src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/convtasnet/p102/00252_4.9dB.wav"
+                        type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        <td><img src="sample.png"/>
+        <td><img src="sample1.png"/>
+        <td>
+    </tr>
+    <tr>
+        <td>Clean sample
+        <td>
+        <audio id="audioPlayerConvTasNet12" controls>
+                <source id="audioSourceConvTasNet12"
+                        src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/convtasnet/p102/00252_4.9dB.wav"
+                        type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        <td><img src="sample.png"/>
+        <td><img src="sample1.png"/>
+        <td><img src="sample2.png"/>
+    </tr>
+    <tr>
+        <td>Clean sample
+        <td>
+        <audio id="audioPlayerConvTasNet13" controls>
+                <source id="audioSourceConvTasNet13"
+                        src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/convtasnet/p102/00252_4.9dB.wav"
+                        type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        <td><img src="sample.png"/>
+        <td><img src="sample1.png"/>
+        <td><img src="sample2.png"/>
+    </tr>
+    <tr>
+        <td>Clean sample
+        <td>
+        <audio id="audioPlayerConvTasNet14" controls>
+                <source id="audioSourceConvTasNet14"
+                        src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/convtasnet/p102/00252_4.9dB.wav"
+                        type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        <td><img src="sample.png"/>
+        <td><img src="sample1.png"/>
+        <td>
+    </tr>
+</table>
+<br /> <br /><br />
+<h2>Mixed noise examples</h2><br />
+<table>
+    <tr>
+        <th>(a)
+        <th>(b)Embedded audio sample
+        <th>(c)Audio waveform
+        <th>(d)Mel log spectrogram for audio
+        <th>(e)Mel log spectrogram for accelerometer
+    </tr>
+    <tr>
+        <td>Clean sample
+        <td>
+        <audio id="audioPlayerConvTasNet15" controls>
+                <source id="audioSourceConvTasNet15"
+                        src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/convtasnet/p102/00252_4.9dB.wav"
+                        type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        <td><img src="sample.png"/>
+        <td><img src="sample1.png"/>
+        <td><img src="sample2.png"/>
+    </tr>
+    <tr>
+        <td>Clean sample
+        <td>
+        <audio id="audioPlayerConvTasNet16" controls>
+                <source id="audioSourceConvTasNet16"
+                        src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/convtasnet/p102/00252_4.9dB.wav"
+                        type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        <td><img src="sample.png"/>
+        <td><img src="sample1.png"/>
+        <td><img src="sample2.png"/>
+    </tr>
+    <tr>
+        <td>Clean sample
+        <td>
+        <audio id="audioPlayerConvTasNet17" controls>
+                <source id="audioSourceConvTasNet17"
+                        src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/convtasnet/p102/00252_4.9dB.wav"
+                        type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        <td><img src="sample.png"/>
+        <td><img src="sample1.png"/>
+        <td>
+    </tr>
+    <tr>
+        <td>Clean sample
+        <td>
+        <audio id="audioPlayerConvTasNet18" controls>
+                <source id="audioSourceConvTasNet18"
+                        src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/convtasnet/p102/00252_4.9dB.wav"
+                        type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        <td><img src="sample.png"/>
+        <td><img src="sample1.png"/>
+        <td><img src="sample2.png"/>
+    </tr>
+    <tr>
+        <td>Clean sample
+        <td>
+        <audio id="audioPlayerConvTasNet19" controls>
+                <source id="audioSourceConvTasNet19"
+                        src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/convtasnet/p102/00252_4.9dB.wav"
+                        type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        <td><img src="sample.png"/>
+        <td><img src="sample1.png"/>
+        <td><img src="sample2.png"/>
+    </tr>
+    <tr>
+        <td>Clean sample
+        <td>
+        <audio id="audioPlayerConvTasNet20" controls>
+                <source id="audioSourceConvTasNet20"
+                        src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/convtasnet/p102/00252_4.9dB.wav"
+                        type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        <td><img src="sample.png"/>
+        <td><img src="sample1.png"/>
+        <td>
+    </tr>
+
+    <tr>
+        <td>Clean sample
+        <td>
+        <audio id="audioPlayerConvTasNet21" controls>
+                <source id="audioSourceConvTasNet21"
+                        src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/convtasnet/p102/00252_4.9dB.wav"
+                        type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        <td><img src="sample.png"/>
+        <td><img src="sample1.png"/>
+        <td><img src="sample2.png"/>
+    </tr>
+    <tr>
+        <td>Clean sample
+        <td>
+        <audio id="audioPlayerConvTasNet22" controls>
+                <source id="audioSourceConvTasNet22"
+                        src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/convtasnet/p102/00252_4.9dB.wav"
+                        type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        <td><img src="sample.png"/>
+        <td><img src="sample1.png"/>
+        <td><img src="sample2.png"/>
+    </tr>
+    <tr>
+        <td>Clean sample
+        <td>
+        <audio id="audioPlayerConvTasNet23" controls>
+                <source id="audioSourceConvTasNet23"
+                        src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/convtasnet/p102/00252_4.9dB.wav"
+                        type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        <td><img src="sample.png"/>
+        <td><img src="sample1.png"/>
+        <td>
+    </tr>
+
+    <tr>
+        <td>Clean sample
+        <td>
+        <audio id="audioPlayerConvTasNet24" controls>
+                <source id="audioSourceConvTasNet24"
+                        src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/convtasnet/p102/00252_4.9dB.wav"
+                        type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        <td><img src="sample.png"/>
+        <td><img src="sample1.png"/>
+        <td><img src="sample2.png"/>
+    </tr>
+    <tr>
+        <td>Clean sample
+        <td>
+        <audio id="audioPlayerConvTasNet25" controls>
+                <source id="audioSourceConvTasNet25"
+                        src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/convtasnet/p102/00252_4.9dB.wav"
+                        type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        <td><img src="sample.png"/>
+        <td><img src="sample1.png"/>
+        <td><img src="sample2.png"/>
+    </tr>
+    <tr>
+        <td>Clean sample
+        <td>
+        <audio id="audioPlayerConvTasNet26" controls>
+                <source id="audioSourceConvTasNet26"
+                        src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/convtasnet/p102/00252_4.9dB.wav"
+                        type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        <td><img src="sample.png"/>
+        <td><img src="sample1.png"/>
+        <td>
+    </tr>
+
+    <tr>
+        <td>Clean sample
+        <td>
+        <audio id="audioPlayerConvTasNet27" controls>
+                <source id="audioSourceConvTasNet27"
+                        src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/convtasnet/p102/00252_4.9dB.wav"
+                        type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        <td><img src="sample.png"/>
+        <td><img src="sample1.png"/>
+        <td><img src="sample2.png"/>
+    </tr>
+    <tr>
+        <td>Clean sample
+        <td>
+        <audio id="audioPlayerConvTasNet28" controls>
+                <source id="audioSourceConvTasNet28"
+                        src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/convtasnet/p102/00252_4.9dB.wav"
+                        type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        <td><img src="sample.png"/>
+        <td><img src="sample1.png"/>
+        <td><img src="sample2.png"/>
+    </tr>
+    <tr>
+        <td>Clean sample
+        <td>
+        <audio id="audioPlayerConvTasNet29" controls>
+                <source id="audioSourceConvTasNet29"
+                        src="https://www2.informatik.uni-hamburg.de/sp/audio/publications/interspeech2024-ears/files/ears-wham/convtasnet/p102/00252_4.9dB.wav"
+                        type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        <td><img src="sample.png"/>
+        <td><img src="sample1.png"/>
+        <td>
+    </tr>
+</table>
+
+</body>
+</html>
